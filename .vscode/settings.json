@@ -1,0 +1,8 @@
+{
+  // https://cva.style/docs/getting-started/installation#intellisense
+  // to give suggestion tailwind css extension so appear in cva/cx
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+  ]
+}
