@@ -1,4 +1,4 @@
 
-export enum ApiEx {
+export enum ApiDummy {
   test = "/api/test"
 }

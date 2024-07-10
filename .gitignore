@@ -27,10 +27,6 @@ dist-ssr
 .env
 .env.*
 
-public
-
-pnpm*
-
 .million
 
 coverage
