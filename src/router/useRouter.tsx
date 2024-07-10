@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 
 import Home from "@/pages/Home";
 
-import useGlobalStore from "@/store/global/GlobalStore";
+import useGlobalStore from "@/store/global/globalStore";
 
 export enum EPath {
   home = "/",

@@ -1,8 +1,12 @@
 ## Boileplate CSR Version
 
-### Version 1.0.0
+### Version 1.0.1
 
-### Latest Update: 2 July 2024
+### Latest Update: 10 July 2024
+- adjust foldering base on SOP created by FE team
+- add example for api call
+- add example for variable, utils, typings, store, modules
+- update nvmrc (node version) to 20.15.0
 
 - Note : Please update atleast per 3 months or when you want to start a new project using this after 3 months
 

@@ -177,10 +177,11 @@ const config = {
         5: "5",
       },
       screens: {
+        mobile: "320px",
         tablet: "640px",
         laptop: "1024px",
-        desktop: "1280px",
-        layout: "576px",
+        laptopL: "1280px",
+        laptopXL: "1536px",
       },
       width: {
         layout: "576px",
