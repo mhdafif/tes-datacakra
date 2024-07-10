@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 
-import { IData, IGlobalStore } from "./IGlobalStore";
+import { IData, IGlobalStore } from "./IdlobalStore";
 
 const initialData: IData = {
   setupInterceptor: false,
