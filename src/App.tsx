@@ -14,7 +14,7 @@ function App() {
       <RouteConfig />
       {isDev && (
         <div
-          className="fixed bottom-0 left-0 z-10 w-[140px] p-4 text-white bg-uvRed1 text-center translate-x-[-20%] translate-y-1/2 font-bold shadow-[0px_1px_4px_4px_rgba(0,0,0,0.3)]"
+          className="fixed bottom-0 left-0 z-10 w-[140px] p-4 text-white bg-uvgreen text-center translate-x-[-20%] translate-y-1/2 font-bold shadow-[0px_1px_4px_4px_rgba(0,0,0,0.3)]"
           style={{ rotate: "45deg" }}
         >
           DEV

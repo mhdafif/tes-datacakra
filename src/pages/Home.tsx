@@ -1,7 +1,7 @@
-import useHome from "@/hooks/useHome";
+import useHome from "@/modules/home/useHome";
 import { useTranslation } from "react-i18next";
 
-import useGlobalStore from "@/store/global/GlobalStore";
+import useGlobalStore from "@/store/global/globalStore";
 
 const Home = () => {
   /*======================== Props ======================== */
