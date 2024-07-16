@@ -1,22 +1,31 @@
-FROM node:18-alpine AS base
+# Use the official Node.js runtime as the base image
+FROM node:20 as build
+
+RUN npm i -g pnpm
 
 # Set the working directory in the container
 WORKDIR /app
 
-# Copy package.json and yarn.lock to the working directory
 COPY package.json ./
-COPY yarn.lock ./
+COPY pnpm-lock.yaml ./
 
 # Install dependencies
-RUN yarn install
+RUN pnpm install --frozen-lockfile --prod=false
 
-# Copy the rest of the application code to the working directory
+# Copy the entire application code to the container
 COPY . .
 
-RUN yarn build
+# Build the React app for production
+RUN pnpm run build
 
-# Expose the port the app runs on
-EXPOSE 5173
+# Use Nginx as the production server
+FROM nginx:alpine
 
-# Define the command to run your application
-CMD ["yarn", "preview"]
+# Copy the built React app to Nginx's web server directory
+COPY --from=build /app/dist /usr/share/nginx/html
+
+# Expose port 80 for the Nginx server
+EXPOSE 80
+
+# Start Nginx when the container runs
+CMD ["nginx", "-g", "daemon off;"]
