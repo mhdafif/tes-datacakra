@@ -1,4 +1,6 @@
+// Interceptor v2
 // this interceptor is used for handling the token expired case and has refresh token (like cats-client-dashboard)
+// also this can refresh failed request when token is refreshed
 
 // import { Location, NavigateFunction } from "react-router-dom";
 
