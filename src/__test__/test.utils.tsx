@@ -14,7 +14,7 @@ interface WrapperProps {
 function render(
   ui: ReactElement,
   { route = "/", ...renderOptions }: CustomRenderOptions = {}
-) {
+): ReturnType<typeof rtlRender> {
   window.history.pushState({}, "", route);
 
   const Wrapper: React.FC<WrapperProps> = ({ children }) => (
@@ -25,6 +25,7 @@ function render(
 }
 
 // re-export everything
+// eslint-disable-next-line react-refresh/only-export-components
 export * from "@testing-library/react";
 // override render method
 export { render };

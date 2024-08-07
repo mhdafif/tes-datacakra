@@ -1,0 +1,8 @@
+dist
+.husky
+.vscode
+node_modules
+
+coverage
+
+.million

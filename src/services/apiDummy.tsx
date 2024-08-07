@@ -1,4 +1,3 @@
-
 export enum ApiDummy {
-  test = "/api/test"
+  test = "/api/test",
 }

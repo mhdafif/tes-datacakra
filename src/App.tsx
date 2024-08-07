@@ -1,3 +1,4 @@
+import useApp from "./modules/useApp";
 import RouteConfig from "./router/Router";
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     import.meta.env.VITE_ENVIRONMENT === "staging" ||
     import.meta.env.VITE_ENVIRONMENT === "local";
 
+  useApp();
   /*======================== Return ======================== */
 
   return (

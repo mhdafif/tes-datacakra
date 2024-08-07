@@ -1,12 +1,22 @@
 ## Boileplate CSR Version
 
-### Version 1.0.1
+### Version 1.1.0
 
-### Latest Update: 10 July 2024
+### Latest Update
+
+#### 10 July 2024
+
 - adjust foldering base on SOP created by FE team
 - add example for api call
 - add example for variable, utils, typings, store, modules
 - update nvmrc (node version) to 20.15.0
+
+#### 7 Aug 2024
+
+- adjust axios interceptor (search 'interceptor v1' or 'interceptor v2' for detail)
+- add husky for pre-commit
+- add utils (number formator & image loader)
+- update zustand (like how to utilize devtools, persist, and some set & reset state to initial state)
 
 - Note : Please update atleast per 3 months or when you want to start a new project using this after 3 months
 
@@ -33,18 +43,20 @@
   - to help identify and fix slow code
 
 ## custom component
-  - [ui.shadcn](https://ui.shadcn.com/docs)
-    - used for creating custom component as needed
-    - as to how we run is throught CLI : ``npx shadcn-ui@latest add button`` [(docs)](https://ui.shadcn.com/docs/components/button)
-  
-  ### for ui.shadcn used some library to run, details below
-  - class-variance-authority
-  - [@radix-ui](https://www.radix-ui.com/)
-    - UI Component library, for example: Dialog, Popover, Tooltip, etc. install the component as needed using CLI
-  - clsx
-  - [lucide-react](https://lucide.dev/guide/packages/lucide-react)
-    - for icon
-  - tailwind-merge
+
+- [ui.shadcn](https://ui.shadcn.com/docs)
+  - used for creating custom component as needed
+  - as to how we run is throught CLI : `npx shadcn-ui@latest add button` [(docs)](https://ui.shadcn.com/docs/components/button)
+
+### for ui.shadcn used some library to run, details below
+
+- class-variance-authority
+- [@radix-ui](https://www.radix-ui.com/)
+  - UI Component library, for example: Dialog, Popover, Tooltip, etc. install the component as needed using CLI
+- clsx
+- [lucide-react](https://lucide.dev/guide/packages/lucide-react)
+  - for icon
+- tailwind-merge
 
 # DELETE ABOVE THIS LINE FOR NEW PROJECT
 
