@@ -1,33 +1,16 @@
-import http from "@/utils/http";
-import { create } from "zustand";
-import { devtools } from "zustand/middleware";
+export interface IData {
+  code: string;
+  id: number;
+}
+export interface IDummy {
+  loading: boolean;
+  data?: IData[];
+}
 
-import { IDummy, IDummyStore } from "./dummyStore";
+export type DummyStateType = "loading";
 
-const initialState: IDummy = {
-  loading: false,
-  data: undefined,
-};
-
-const useDummyStore = create<IDummyStore>()(
-  // to track data on redux dev tools
-  devtools((set) => ({
-    ...initialState,
-    loadData: async () => {
-      try {
-        set({ loading: true });
-        const response = await http({
-          url: "/api/dummy",
-        });
-        set({
-          data: response.data.data,
-        });
-      } finally {
-        set({ loading: false });
-      }
-    },
-    reset: () => set(initialState),
-  }))
-);
-
-export default useDummyStore;
+export interface IDummyStore extends IDummy {
+  loadData(): Promise<any>;
+  setState(type: DummyStateType, value: any): void;
+  resetState(type: DummyStateType, value?: any): void;
+}
