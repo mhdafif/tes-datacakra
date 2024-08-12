@@ -10,6 +10,7 @@
 - add example for api call
 - add example for variable, utils, typings, store, modules
 - update nvmrc (node version) to 20.15.0
+- docker
 
 #### 7 Aug 2024
 
