@@ -1,29 +1,49 @@
-import { ReactElement, cloneElement, memo, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
-interface IProps {
-  styleLoader?: string;
-  children: ReactElement;
+interface IProps extends React.ComponentProps<"img"> {
+  src: string;
+  alt?: string;
+  classContainer?: string;
+  loaderClass?: string;
+  children?: React.ReactNode;
 }
 const ImageLoader = (props: IProps) => {
-  const { children, styleLoader } = props;
-
+  const { classContainer, className, loaderClass, children, ...others } = props;
   const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   const handleImageLoad = () => {
     setIsImageLoaded(true);
   };
 
-  const ClonedChild = memo(() =>
-    cloneElement(children, { onLoad: handleImageLoad })
-  );
+  const imgRef = useRef(null);
+
+  useEffect(() => {
+    if ((imgRef.current as HTMLImageElement | null)?.complete) {
+      handleImageLoad();
+    }
+  }, []);
 
   return (
-    <div className="relative">
+    <div className={twMerge("relative", classContainer)}>
       {!isImageLoaded && (
-        <div className={twMerge("absolute bg-gray9c", styleLoader)}></div>
+        <div
+          className={twMerge(
+            "absolute h-full w-full rounded-sm skeleton",
+            className,
+            loaderClass
+          )}
+        ></div>
       )}
-      <ClonedChild />
+      <img
+        {...others}
+        ref={imgRef}
+        className={className}
+        onLoad={() => {
+          handleImageLoad();
+        }}
+      />
+      {children}
     </div>
   );
 };

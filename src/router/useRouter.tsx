@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { JSX, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 import Home from "@/pages/Home";
@@ -22,7 +22,8 @@ const useRouter = () => {
 
   const { pathname } = useLocation();
   // const navigate = useNavigate();
-  const { loading, setLoading } = useGlobalStore();
+  const loading = useGlobalStore((state) => state.loading);
+  const resetGlobalState = useGlobalStore((state) => state.resetState);
 
   /*======================== Handler ======================== */
 
@@ -61,7 +62,7 @@ const useRouter = () => {
   useEffect(() => {
     // to reset loading if somehow when login or something(api request) stuck the loading as true
     if (loading) {
-      setLoading(false);
+      resetGlobalState("loading");
     }
   }, []);
 

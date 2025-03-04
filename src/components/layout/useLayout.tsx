@@ -1,17 +1,9 @@
 import { useEffect, useState } from "react";
 
-// import useGlobalStore from "@/store/global/GlobalStore";
-
 const useLayout = () => {
-  /*======================== Props ======================== */
-
   /*======================== UseState ======================== */
 
   const [isVisibleScrollToTop, setIsVisibleScrollToTop] = useState(false);
-
-  /*======================== Store ======================== */
-
-  // const { setupInterceptor, setSetupInterceptor } = useGlobalStore();
 
   /*======================== Handler ======================== */
 
@@ -31,14 +23,6 @@ const useLayout = () => {
       behavior: "smooth",
     });
   };
-
-  /*======================== Others ======================== */
-
-  // if (!setupInterceptor) {
-  //   // setup(navigate, location);
-  //   setup();
-  //   setSetupInterceptor();
-  // }
 
   /*======================== UseEffect ======================== */
 
