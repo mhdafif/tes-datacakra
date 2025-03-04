@@ -1,9 +1,15 @@
-export interface IData {
+export interface IGlobalState {
   loading: boolean;
-  setupInterceptor: boolean;
+  error: any;
+
+  notif: {
+    isOpen: boolean;
+    message: string;
+    type: "success" | "error" | "warning" | "info";
+  };
 }
 
-export interface IGlobalStore extends IData {
-  setLoading(value: boolean): void;
-  setSetupInterceptor(): void;
+export interface IGlobalStore extends IGlobalState {
+  setState(type: keyof IGlobalState, value: any): void;
+  resetState(type: keyof IGlobalState, value?: any): void;
 }

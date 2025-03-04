@@ -1,25 +1,31 @@
+import {
+  // queryAddDummy,
+  queryLoadDummy,
+  // queryUpdateDummy,
+} from "@/queries/dummy/dummyQueries";
 import { useTranslation } from "react-i18next";
-
-// import useDummyStore from "@/store/dummy/iDummyStore";
 
 const useHome = () => {
   /*======================== Props ======================== */
 
-  // const { loadData: loadDummy } = useDummyStore();
   const { i18n } = useTranslation();
+
+  /*======================== Queries ======================== */
+
+  const { data, isLoading } = queryLoadDummy();
+  // const { mutateAsync: addDummy, isPending: isLoading } = queryAddDummy();
+  // const { mutateAsync: updateDummy, isPending: isLoading } = queryUpdateDummy();
 
   /*======================== Handler ======================== */
 
   const handleChangeLanguage = (lang: string) => {
     i18n.changeLanguage(lang);
   };
-  // const handleLoadDummy = async () => {
-  //   await loadDummy();
-  // };
-
   /*======================== Return ======================== */
 
   return {
+    data,
+    isLoading,
     handleChangeLanguage,
   };
 };

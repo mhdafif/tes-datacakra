@@ -22,9 +22,18 @@
     "^[./]",
     "^@/assets/(.*)$",
     "^@/components/(.*)$",
+    "^@/config/(.*)$",
     "^@/helper/(.*)$",
+    "^@/locales/(.*)$",
+    "^@/modules/(.*)$",
     "^@/pages/(.*)$",
-    "^@/store/(.*)$"
+    "^@/router/(.*)$",
+    "^@/services/(.*)$",
+    "^@/store/(.*)$",
+    "^@/styles/(.*)$",
+    "^@/typings/(.*)$",
+    "^@/utils/(.*)$",
+    "^@/variables/(.*)$"
   ],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true

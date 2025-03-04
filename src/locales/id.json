@@ -1,4 +1,6 @@
 {
-  "home": "rumah",
-  "page-not-found": "Halaman ini tidak ditemukan"
+  "home": "<green>rumah</green>",
+  "loading": "Memuat...",
+  "page-not-found": "Halaman ini tidak ditemukan",
+  "copy-success": "Disalin ke clipboard"
 }

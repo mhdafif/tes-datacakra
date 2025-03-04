@@ -2,15 +2,13 @@ export interface IData {
   code: string;
   id: number;
 }
-export interface IDummy {
+export interface IDummyState {
   loading: boolean;
   data?: IData[];
 }
 
-export type DummyStateType = "loading";
-
-export interface IDummyStore extends IDummy {
+export interface IDummyStore extends IDummyState {
   loadData(): Promise<any>;
-  setState(type: DummyStateType, value: any): void;
-  resetState(type: DummyStateType, value?: any): void;
+  setState(type: keyof IDummyState, value: any): void;
+  resetState(type: keyof IDummyState, value?: any): void;
 }

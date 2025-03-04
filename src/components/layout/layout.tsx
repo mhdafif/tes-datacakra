@@ -1,5 +1,7 @@
 import { Outlet } from "react-router-dom";
 
+import { Toaster } from "../ui/toaster";
+import UvNotif from "../uv/uvNotif";
 import useLayout from "./useLayout";
 
 import arrowIcon from "@/assets/icon/arrow-white.svg";
@@ -18,6 +20,9 @@ const Layout = () => {
           <Outlet />
         </div>
       </div>
+
+      <Toaster />
+      <UvNotif />
 
       {/* Scroll Top */}
       {isVisibleScrollToTop && (

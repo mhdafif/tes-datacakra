@@ -124,3 +124,7 @@
   - (build) : Changes related to the build system or external dependencies.
   - (ci) : Updates to continuous integration (CI) configuration files and scripts.
   - (wip) : Works in progress; used during development but not meant for the final commit history.
+
+# Another recommendation package is:
+
+- for slider => react-slick slick-carousel @types/react-slick

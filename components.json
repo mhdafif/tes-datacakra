@@ -4,7 +4,7 @@
   "rsc": false,
   "tsx": true,
   "tailwind": {
-    "config": "tailwind.config.js",
+    "config": "tailwind.config.ts",
     "css": "src/styles/_main.css",
     "baseColor": "slate",
     "cssVariables": true,
@@ -12,6 +12,6 @@
   },
   "aliases": {
     "components": "src/components",
-    "utils": "src/config/utils-shadcn"
+    "utils": "@/config/utils-shadcn"
   }
 }

@@ -1,5 +1,6 @@
+import { Trans, useTranslation } from "react-i18next";
+
 import useHome from "@/modules/home/useHome";
-import { useTranslation } from "react-i18next";
 
 import useGlobalStore from "@/store/global/globalStore";
 
@@ -27,8 +28,14 @@ const Home = () => {
 
   return (
     <div>
-      {loading && <div>loading...</div>}
-      THIS IS {t("home")}
+      {loading && <div>{t("loading")}</div>}
+      THIS IS{" "}
+      <Trans
+        i18nKey="home"
+        components={{
+          green: <span className="text-uvgreen" />,
+        }}
+      />
       <div className="">
         <div
           className={`cursor-pointer p-3 w-52 ${

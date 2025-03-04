@@ -7,37 +7,67 @@ const axiosInstance = axios.create({
   timeout: 20000,
 });
 
-// Interceptor v1
-// this used for handling simple interceptor, like no involvement of navigation
+axiosInstance.interceptors.request.use(
+  (config: any) => {
+    // const token = useConfigStore.getState().token;
+    // const urlParams = new URLSearchParams(window.location.search);
+    // const urlToken = urlParams.get("token");
+    // if (urlToken) {
+    //   useConfigStore.setState({ token: urlToken });
+    // }
 
-// axiosInstance.interceptors.request.use(
-//   (config: any) => {
-//     const token = useConfigStore.getState().token;
-//     const urlParams = new URLSearchParams(window.location.search);
-//     const urlToken = urlParams.get("token");
-//     if (urlToken) {
-//       useConfigStore.setState({ token: urlToken });
-//     }
+    // // Use the token from the store or from the URL parameters
+    // const finalToken = urlToken || token;
+    // if (finalToken) {
+    //   config.headers.Authorization = finalToken;
+    // }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 
-//     // Use the token from the store or from the URL parameters
-//     const finalToken = urlToken || token;
-//     if (finalToken) {
-//       config.headers.Authorization = finalToken;
-//     }
-//     return config;
-//   },
-//   (error) => {
-//     return Promise.reject(error);
-//   }
-// );
+axiosInstance.interceptors.response.use(
+  (response) => {
+    // if (
+    //   location.pathname === "/" ||
+    //   location.pathname.includes("expired") ||
+    //   location.pathname.includes("error")
+    // ) {
+    //   window.location.href = useConfigStore.getState().lastVisitPage;
+    // } else {
+    //   // make sure token is removed from url
+    //   const urlParams = new URLSearchParams(location.search);
+    //   const urlToken = urlParams.get("token");
+    //   if (urlToken) {
+    //     urlParams.delete("token");
+    //     const newUrl = location.pathname;
+    //     history.replaceState(null, "", newUrl);
+    //   }
+    // }
 
-// axiosInstance.interceptors.response.use(
-//   (response) => {
-//     return response;
-//   },
-//   (error) => {
-//     return Promise.reject(error);
-//   }
-// );
+    return response;
+  },
+  (error) => {
+    // const code = parseInt(error.response && error.response.status);
+
+    // switch (code) {
+    //   case 400:
+    //   case 401:
+    //     window.location.href = "/expired";
+    //     break;
+
+    //   case 500:
+    //     // window.location.href = "/error";
+    //     break;
+
+    //   default:
+    //     // window.location.href = "/error";
+    //     break;
+    // }
+    return Promise.reject(error.response.data);
+  }
+);
 
 export default axiosInstance;

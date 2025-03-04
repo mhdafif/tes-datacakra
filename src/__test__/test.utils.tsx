@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
 import { RenderOptions, render as rtlRender } from "@testing-library/react";
 import React, { ReactElement, ReactNode } from "react";
 import { MemoryRouter } from "react-router-dom";
@@ -20,7 +19,6 @@ function render(
   const Wrapper: React.FC<WrapperProps> = ({ children }) => (
     <MemoryRouter>{children}</MemoryRouter>
   );
-
   return rtlRender(ui, { wrapper: Wrapper, ...renderOptions });
 }
 

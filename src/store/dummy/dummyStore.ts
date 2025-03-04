@@ -1,10 +1,11 @@
-import http from "@/utils/http";
 import { StateCreator, create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 
-import { DummyStateType, IDummy, IDummyStore } from "./iDummyStore";
+import { IDummyState, IDummyStore } from "./iDummyStore";
 
-const initialState: IDummy = {
+import http from "@/utils/http";
+
+const initialState: IDummyState = {
   loading: false,
   data: undefined,
 };
@@ -35,7 +36,7 @@ const initialState: IDummy = {
 
 // complicated store
 // separate the middleware bellow
-const clientStoreSlice: StateCreator<
+const dummyStoreSlice: StateCreator<
   IDummyStore,
   [
     // ["zustand/subscribeWithSelector", never],
@@ -61,28 +62,38 @@ const clientStoreSlice: StateCreator<
       set({ loading: false }, false, "loading");
     }
   },
-  setState: (type: DummyStateType, value: any) => set({ [type]: value }),
-  resetState: (type: DummyStateType, value?: any) => {
+  setState: (type: keyof IDummyState, value: any) => {
+    set({ [type]: value }, false, `dummy-set-state-${type}`);
+  },
+  resetState: (type: keyof IDummyState, value?: any) => {
     set(
-      { [type]: initialState[type as keyof IDummy] || value || undefined },
+      {
+        [type]: initialState[type as keyof IDummyState] || value || undefined,
+      },
       false,
-      // this is to custom the name on redux devtools action
-      `reset/${type}`
+      `dummy-reset-state-${type}`
     );
   },
 });
 
-const useClientStore = create<IDummyStore>()(
+const useDummyStore = create<IDummyStore>()(
   // devtools documentation https://github.com/zalmoxisus/redux-devtools-extension/blob/master/docs/API/Arguments.md#serialize
   devtools(
     // persist is to persistent data (in storage)
     // https://docs.pmnd.rs/zustand/integrations/persisting-store-data
-    persist(clientStoreSlice, {
+
+    persist(dummyStoreSlice, {
       name: "dummy-store",
+      // storage: createJSONStorage(() => sessionStorage),
+
+      // exclude some data to persist
       partialize: (state) =>
         Object.fromEntries(
           Object.entries(state).filter(([key]) => !["loading"].includes(key))
         ),
+
+      // or include some data
+      // partialize: (state) => ({ cartSummary: state.cartSummary }),
     }),
     {
       // devtools is to monitor the store throught redux devtools
@@ -102,6 +113,6 @@ const useClientStore = create<IDummyStore>()(
   )
 );
 
-export default useClientStore;
+export default useDummyStore;
 
 // full documentation can be seen here https://github.com/pmndrs/zustand
