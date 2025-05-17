@@ -33,3 +33,5 @@ pnpm*
 .million
 
 coverage
+
+vercel.json
