@@ -61,7 +61,7 @@ const Auth = () => {
                 placeholder={t("auth.email")}
                 disabled={isLoading}
                 onChange={(e) => handleForm("email", e.target.value)}
-                onEnter={() => handleSubmit()}
+                // onEnter={() => handleSubmit()}
               >
                 {form.email.length > 0 && !isEmailValid && (
                   <p className="text-red-600 mb-0 text-xs">
@@ -79,7 +79,7 @@ const Auth = () => {
               placeholder={t("auth.username")}
               disabled={isLoading}
               onChange={(e) => handleForm("username", e.target.value)}
-              onEnter={() => handleSubmit()}
+              // onEnter={() => handleSubmit()}
             ></TextField>
 
             <TextField
@@ -90,7 +90,7 @@ const Auth = () => {
               placeholder={t("auth.password")}
               disabled={isLoading}
               onChange={(e) => handleForm("password", e.target.value)}
-              onEnter={() => handleSubmit()}
+              // onEnter={() => handleSubmit()}
             ></TextField>
 
             <Button
