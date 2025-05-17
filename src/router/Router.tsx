@@ -6,6 +6,7 @@ import useRouter from "./useRouter";
 import Layout from "@/components/layout/layout";
 
 import NotFound from "@/pages/NotFound";
+import Auth from "@/pages/Auth";
 
 const RouteConfig = () => {
   const { routes } = useRouter();
@@ -32,6 +33,7 @@ const RouteConfig = () => {
               routes for. */}
         {/* for not found page */}
       </Route>
+      <Route path="/auth" element={<Auth />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

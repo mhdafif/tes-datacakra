@@ -90,6 +90,10 @@
   }
 }
 
+html,
+body {
+  font-family: "Ancizar Sans", sans-serif;
+}
 /* Change autocomplete styles in WebKit */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -143,4 +147,10 @@ input:autofill {
 
 input:-webkit-autofill {
   color: white;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.5;
+  }
 }

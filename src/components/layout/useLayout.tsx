@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 
+import useUserStore from "@/store/user/userStore";
+
 const useLayout = () => {
   /*======================== UseState ======================== */
 
   const [isVisibleScrollToTop, setIsVisibleScrollToTop] = useState(false);
+  const getUser = useUserStore((state) => state.getState);
 
   /*======================== Handler ======================== */
 
@@ -40,6 +43,7 @@ const useLayout = () => {
   return {
     isVisibleScrollToTop,
     scrollToTop,
+    getUser,
   };
 };
 

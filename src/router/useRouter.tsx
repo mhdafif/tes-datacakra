@@ -1,12 +1,20 @@
 import { JSX, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
-import Home from "@/pages/Home";
+import Category from "@/pages/Category";
+import Dashboard from "@/pages/Home";
+import ArticleDetail from "@/pages/articles/Detail";
+import Articles from "@/pages/articles/Index";
 
 import useGlobalStore from "@/store/global/globalStore";
+import useUserStore from "@/store/user/userStore";
 
 export enum EPath {
+  auth = "/auth",
   home = "/",
+  category = "/category",
+  articles = "/articles",
+  articleDetail = "/articles/:id",
 }
 
 interface IRoutes {
@@ -14,49 +22,42 @@ interface IRoutes {
   children?: IRoutes[];
   path: string | EPath;
   element: JSX.Element;
-  title: string;
 }
 
 const useRouter = () => {
   /*======================== Props ======================== */
 
   const { pathname } = useLocation();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const loading = useGlobalStore((state) => state.loading);
   const resetGlobalState = useGlobalStore((state) => state.resetState);
 
+  /*======================== Store ======================== */
+
+  const getUser = useUserStore((state) => state.getState);
+
   /*======================== Handler ======================== */
 
-  // const handlePageNeedToken = () => {
-  //   if (!user?.token) {
-  //     switch (true) {
-  //       case pathname.startsWith(EPath.order):
-  //       case pathname.startsWith(EPath.report):
-  //       case pathname === EPath.historyTopUp:
-  //       case pathname === EPath.notification:
-  //       case pathname === EPath.cart:
-  //         return true;
-  //       default:
-  //         return false;
-  //     }
-  //   } else {
-  //     switch (true) {
-  //       case pathname.startsWith(EPath.order):
-  //         return user?.access_api !== "No";
-  //       default:
-  //         return false;
-  //     }
-  //   }
-  // };
+  const handlePageNeedToken = () => {
+    if (!getUser("token")) {
+      switch (true) {
+        case pathname === EPath.home:
+          return true;
+        default:
+          return false;
+      }
+    }
+    return false;
+  };
 
   /*======================== UseEffect ======================== */
 
   useEffect(() => {
     window.scrollTo(0, 0);
     // redirect to home
-    // if (handlePageNeedToken()) {
-    //   navigate("/");
-    // }
+    if (handlePageNeedToken()) {
+      navigate(EPath.auth);
+    }
   }, [pathname]);
 
   useEffect(() => {
@@ -71,8 +72,19 @@ const useRouter = () => {
   const routes: IRoutes[] = [
     {
       path: EPath.home,
-      element: <Home />,
-      title: "menu.dashboard",
+      element: <Dashboard />,
+    },
+    {
+      path: EPath.category,
+      element: <Category />,
+    },
+    {
+      path: EPath.articles,
+      element: <Articles />,
+    },
+    {
+      path: EPath.articleDetail,
+      element: <ArticleDetail />,
     },
   ];
 

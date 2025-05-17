@@ -1,9 +1,10 @@
 import axios from "./axios";
 
+type IMethod = "get" | "post" | "put" | "patch" | "delete";
 const http = async ({
   url = "" as string,
   params = {} as any,
-  method = "get",
+  method = "get" as IMethod,
   data = {},
   headers = {},
   auth = undefined as any,

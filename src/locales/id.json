@@ -1,6 +1,18 @@
 {
-  "home": "<green>rumah</green>",
-  "loading": "Memuat...",
-  "page-not-found": "Halaman ini tidak ditemukan",
-  "copy-success": "Disalin ke clipboard"
+  "home": "<green>Home</green>",
+  "loading": "Loading...",
+  "page-not-found": "This page was not found",
+  "copy-success": "Copied to clipboard",
+  "close": "Close",
+  "auth": {
+    "login": "Login",
+    "logout": "Logout",
+    "register": "Register",
+    "email": "Email",
+    "email-invalid": "Email must be a valid email address",
+    "username": "Username",
+    "password": "Password",
+    "confirm-password": "Confirm Password",
+    "forgot-password": "Forgot Password?"
+  }
 }

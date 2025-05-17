@@ -4,7 +4,6 @@ import { devtools } from "zustand/middleware";
 import { IGlobalState, IGlobalStore } from "./iGlobalStore";
 
 const initialState: IGlobalState = {
-  // setupInterceptor: false,
   loading: false,
   error: undefined,
   notif: {
@@ -30,7 +29,6 @@ const useGlobalStore = create<IGlobalStore>()(
           `global-reset-state-${type}`
         );
       },
-      // setSetupInterceptor: () => set({ setupInterceptor: true }),
     }),
     {
       enabled: import.meta.env.VITE_ENVIRONMENT === "local",

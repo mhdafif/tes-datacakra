@@ -1,19 +1,19 @@
-FROM node:20-alpine as build
+# FROM node:20-alpine as build
 
-RUN npm install -g pnpm
-RUN npm install -g serve
+# RUN npm install -g pnpm
+# RUN npm install -g serve
 
-WORKDIR /app
+# WORKDIR /app
 
-COPY package.json ./
-COPY pnpm-lock.yaml ./
+# COPY package.json ./
+# COPY pnpm-lock.yaml ./
 
-RUN pnpm install
+# RUN pnpm install
 
-COPY . .
+# COPY . .
 
-RUN pnpm run build
+# RUN pnpm run build
 
-EXPOSE 3000
+# EXPOSE 3000
 
-CMD [ "serve", "-s", "dist" ]
+# CMD [ "serve", "-s", "dist" ]

@@ -1,5 +1,7 @@
 import axios from "axios";
 
+import useUserStore from "@/store/user/userStore";
+
 const defaultURL = import.meta.env.VITE_BASE_API_URL;
 
 const axiosInstance = axios.create({
@@ -9,18 +11,10 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   (config: any) => {
-    // const token = useConfigStore.getState().token;
-    // const urlParams = new URLSearchParams(window.location.search);
-    // const urlToken = urlParams.get("token");
-    // if (urlToken) {
-    //   useConfigStore.setState({ token: urlToken });
-    // }
-
-    // // Use the token from the store or from the URL parameters
-    // const finalToken = urlToken || token;
-    // if (finalToken) {
-    //   config.headers.Authorization = finalToken;
-    // }
+    const token = useUserStore.getState().getState("token");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
     return config;
   },
   (error) => {

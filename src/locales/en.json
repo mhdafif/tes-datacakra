@@ -2,5 +2,48 @@
   "home": "<green>Home</green>",
   "loading": "Loading...",
   "page-not-found": "This page was not found",
-  "copy-success": "Copied to clipboard"
+  "copy-success": "Copied to clipboard",
+  "close": "Close",
+  "submit": "Submit",
+  "edit": "Edit",
+  "delete": "Delete",
+
+  "auth": {
+    "login": "Login",
+    "logout": "Logout",
+    "register": "Register",
+    "email": "Email",
+    "email-invalid": "Email must be a valid email address",
+    "username": "Username",
+    "password": "Password",
+    "confirm-password": "Confirm Password",
+    "forgot-password": "Forgot Password?"
+  },
+  "menu": {
+    "home": "Home",
+    "articles": "Articles",
+    "category": "Category"
+  },
+  "view-all": "View All",
+  "category": {
+    "add": "Add Category",
+    "edit": "Edit Category"
+  },
+  "article": {
+    "add": "Add Article",
+    "edit": "Edit Article",
+    "delete": "Delete Article",
+    "save": "Save Article",
+    "title": "Title",
+    "description": "Description",
+    "cover-image": "Cover Image",
+    "detail": "Article Detail",
+
+    "content": "Content",
+    "category": "Category",
+    "tags": "Tags",
+    "publish": "Publish",
+    "draft": "Save as Draft",
+    "delete-confirmation": "Are you sure you want to delete this article?"
+  }
 }

@@ -1,32 +1,51 @@
-import {
-  // queryAddDummy,
-  queryLoadDummy,
-  // queryUpdateDummy,
-} from "@/queries/dummy/dummyQueries";
-import { useTranslation } from "react-i18next";
+import { queryLoadArticlesList } from "@/queries/articles/articlesQueries";
+import { useEffect, useMemo, useState } from "react";
 
 const useHome = () => {
-  /*======================== Props ======================== */
+  /*======================== UseState ======================== */
 
-  const { i18n } = useTranslation();
+  const [page, setPage] = useState(1);
+  const pageSize = 4; // Assuming a default page size of 4
 
   /*======================== Queries ======================== */
 
-  const { data, isLoading } = queryLoadDummy();
-  // const { mutateAsync: addDummy, isPending: isLoading } = queryAddDummy();
-  // const { mutateAsync: updateDummy, isPending: isLoading } = queryUpdateDummy();
+  const {
+    data: dataArticlesList,
+    isLoading,
+    isRefetching,
+    refetch,
+  } = queryLoadArticlesList({
+    pagination: {
+      page,
+      pageSize,
+    },
+  });
+
+  const hasNextPage = useMemo(() => {
+    if (!dataArticlesList) return false;
+    return (dataArticlesList.meta?.pagination?.total || 0) > page * pageSize;
+  }, [dataArticlesList]);
 
   /*======================== Handler ======================== */
 
-  const handleChangeLanguage = (lang: string) => {
-    i18n.changeLanguage(lang);
+  const handlePage = (value: number) => {
+    setPage(value);
   };
+
+  /*======================== UseEffect ======================== */
+
+  useEffect(() => {
+    refetch();
+  }, [page]);
+
   /*======================== Return ======================== */
 
   return {
-    data,
-    isLoading,
-    handleChangeLanguage,
+    page,
+    articles: dataArticlesList?.data || [],
+    loadingArticles: isLoading || isRefetching,
+    hasNextPage,
+    handlePage,
   };
 };
 
