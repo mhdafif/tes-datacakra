@@ -42,6 +42,8 @@ const useRouter = () => {
     if (!getUser("token")) {
       switch (true) {
         case pathname === EPath.home:
+        case pathname === EPath.category:
+        case pathname.includes(EPath.articles):
           return true;
         default:
           return false;

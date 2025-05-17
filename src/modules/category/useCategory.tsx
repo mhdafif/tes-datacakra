@@ -110,10 +110,6 @@ const useCategory = () => {
 
   /*======================== UseEffect ======================== */
 
-  // useEffect(() => {
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
-
   useEffect(() => {
     if (section === "update" && selectedCategory) {
       inputRefs.current[selectedCategory]?.focus();

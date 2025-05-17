@@ -57,7 +57,7 @@ const ModalArticle = (props: IProps) => {
                 type="text"
                 name="title"
                 placeholder={t("article.title")}
-                // disabled={loading}
+                disabled={isSubmitting}
                 onChange={(e) => handleForm("title", e.target.value)}
               ></TextField>
 
@@ -66,7 +66,7 @@ const ModalArticle = (props: IProps) => {
                 value={form.description}
                 name="description"
                 placeholder={t("article.description")}
-                // disabled={loading}
+                disabled={isSubmitting}
                 onChange={(e) => handleForm("description", e.target.value)}
               ></TextAreaField>
 
@@ -75,9 +75,10 @@ const ModalArticle = (props: IProps) => {
                   <input
                     id="logo-upload"
                     type="file"
-                    className="hidden"
+                    className="hidden aria-disabled:pointer-events-none"
                     accept="image/*"
                     onChange={handleImage}
+                    aria-disabled={isSubmitting}
                   />
                   {form.cover_image_url ? (
                     <ImageLoader

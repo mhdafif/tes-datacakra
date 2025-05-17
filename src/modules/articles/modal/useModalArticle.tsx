@@ -55,15 +55,12 @@ const useModalArticle = (props: IProps) => {
     category: undefined,
     cover_image_url: "",
   });
-  // const [coverImageTemp, setCoverImageTemp] = useState<any>(undefined);
   const isFormValid = useMemo(() => {
     if (mode === "delete") return true; // No validation for delete mode
     return (
       form.title.length > 0 &&
       form.description.length > 0 &&
       form.cover_image_url.length > 0
-      // form.category
-      // form.cover_image_url.length > 0
     );
   }, [form, mode]);
 
@@ -77,7 +74,6 @@ const useModalArticle = (props: IProps) => {
       category: undefined,
       cover_image_url: "",
     });
-    // setCoverImageTemp(undefined);
   };
   const handleForm = (type: keyof IForm, value: any) => {
     setForm((prev) => ({
@@ -89,7 +85,6 @@ const useModalArticle = (props: IProps) => {
     const file = e.target.files?.[0];
     if (file) {
       const response = await uploadFile(file);
-      // setCoverImageTemp(response);
       handleForm("cover_image_url", response.url);
     }
   };
@@ -130,7 +125,6 @@ const useModalArticle = (props: IProps) => {
           title: initialForm.title,
           description: initialForm.description,
           cover_image_url: initialForm.cover_image_url,
-          // category: initialForm.category?.id || undefined,
         });
       }
     }

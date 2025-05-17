@@ -5,7 +5,7 @@ const useHome = () => {
   /*======================== UseState ======================== */
 
   const [page, setPage] = useState(1);
-  const pageSize = 4; // Assuming a default page size of 4
+  const pageSize = 4;
 
   /*======================== Queries ======================== */
 

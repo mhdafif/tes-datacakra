@@ -84,15 +84,6 @@ const useAuth = () => {
     }
   }, [getUser("token")]);
 
-  /*======================== Others ======================== */
-
-  /*======================== Return ======================== */
-  /*======================== Queries ======================== */
-
-  // const { data, isLoading } = queryLoadDummy();
-  // const { mutateAsync: addDummy, isPending: isLoading } = queryAddDummy();
-  // const { mutateAsync: updateDummy, isPending: isLoading } = queryUpdateDummy();
-
   /*======================== Handler ======================== */
 
   const handleChangeLanguage = (lang: string) => {
@@ -101,8 +92,6 @@ const useAuth = () => {
   /*======================== Return ======================== */
 
   return {
-    // data,
-    // isLoading,
     section,
     form,
     isEmailValid,

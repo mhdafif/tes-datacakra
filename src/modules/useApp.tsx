@@ -1,4 +1,3 @@
-// import { setViewportHeight } from "@/utils/setViewportHeight";
 import { QueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 
@@ -10,16 +9,11 @@ const useApp = () => {
       defaultOptions: {
         queries: {
           refetchOnWindowFocus: false,
-          // stale time as default is 30 minutes
           staleTime: 1000 * 60 * 30,
-          // staleTime: 0
-          // retry: 1,
         },
       },
     })
   );
-
-  /*======================== Store ======================== */
 
   /*======================== UseEffect ======================== */
 
