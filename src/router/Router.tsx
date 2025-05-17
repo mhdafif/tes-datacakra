@@ -5,8 +5,8 @@ import useRouter from "./useRouter";
 
 import Layout from "@/components/layout/layout";
 
-import NotFound from "@/pages/NotFound";
 import Auth from "@/pages/Auth";
+import NotFound from "@/pages/NotFound";
 
 const RouteConfig = () => {
   const { routes } = useRouter();
