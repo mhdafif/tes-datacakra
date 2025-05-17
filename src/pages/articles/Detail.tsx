@@ -57,7 +57,7 @@ const ArticleDetail = () => {
       <div className="grid laptop:grid-cols-5 gap-5">
         {isLoading && (
           <>
-            <div className="laptop:col-span-2 skeleton w-full h-52 rounded-5 shadow-md"></div>
+            <div className="laptop:col-span-2 laptop:order-2 skeleton w-full h-52 rounded-5 shadow-md"></div>
             <div className="laptop:col-span-3 skeleton w-full h-96 rounded-5 shadow-md"></div>
           </>
         )}
